@@ -2,27 +2,11 @@
   <div class="index-container">
     <el-row :gutter="20">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-        <el-alert
-          v-if="noticeList[0]"
-          :title="noticeList[0].title"
-          :closable="noticeList[0].closable"
-        >
-          <a
-            target="_blank"
-            href="https://github.com/chuzhixin/vue-admin-beautiful"
-          >
-            <img
-              style="height: 100%; margin-right: 10px;"
-              src="https://img.shields.io/github/stars/chuzhixin/vue-admin-beautiful?style=flat-square&label=Stars&logo=github"
-            />
-            <img
-              style="height: 100%; margin-right: 10px;"
-              src=" https://img.shields.io/badge/Visitors-79.3k/month-blue?style=flat-square&logo=Visual Studio Code"
-            />
-            <img
-              style="height: 100%; margin-right: 10px;"
-              src="https://img.shields.io/github/last-commit/chuzhixin/vue-admin-beautiful?style=flat-square&label=Last Commit&logo=vue.js"
-            />
+        <el-alert v-if="noticeList[0]" :title="noticeList[0].title" :closable="noticeList[0].closable">
+          <a target="_blank" href="https://github.com/chuzhixin/vue-admin-beautiful">
+            <img style="height: 100%; margin-right: 10px;" src="https://img.shields.io/github/stars/chuzhixin/vue-admin-beautiful?style=flat-square&label=Stars&logo=github" />
+            <img style="height: 100%; margin-right: 10px;" src=" https://img.shields.io/badge/Visitors-79.3k/month-blue?style=flat-square&logo=Visual Studio Code" />
+            <img style="height: 100%; margin-right: 10px;" src="https://img.shields.io/github/last-commit/chuzhixin/vue-admin-beautiful?style=flat-square&label=Last Commit&logo=vue.js" />
           </a>
         </el-alert>
       </el-col>
@@ -31,24 +15,10 @@
           <div slot="header">
             <span>访问量</span>
           </div>
-          <vab-chart
-            :autoresize="true"
-            theme="vab-echarts-theme"
-            :options="fwl"
-          />
+          <vab-chart :autoresize="true" theme="vab-echarts-theme" :options="fwl" />
           <div class="bottom">
-            <span
-              >日均访问量:
-
-              <vab-count
-                :start-val="config1.startVal"
-                :end-val="config1.endVal"
-                :duration="config1.duration"
-                :separator="config1.separator"
-                :prefix="config1.prefix"
-                :suffix="config1.suffix"
-                :decimals="config1.decimals"
-              />
+            <span>日均访问量:
+              <vab-count :start-val="config1.startVal" :end-val="config1.endVal" :duration="config1.duration" :separator="config1.separator" :prefix="config1.prefix" :suffix="config1.suffix" :decimals="config1.decimals" />
             </span>
           </div>
         </el-card>
@@ -58,23 +28,10 @@
           <div slot="header">
             <span>授权数</span>
           </div>
-          <vab-chart
-            :autoresize="true"
-            theme="vab-echarts-theme"
-            :options="sqs"
-          />
+          <vab-chart :autoresize="true" theme="vab-echarts-theme" :options="sqs" />
           <div class="bottom">
-            <span
-              >总授权数:
-              <vab-count
-                :start-val="config2.startVal"
-                :end-val="config2.endVal"
-                :duration="config2.duration"
-                :separator="config2.separator"
-                :prefix="config2.prefix"
-                :suffix="config2.suffix"
-                :decimals="config2.decimals"
-            /></span>
+            <span>总授权数:
+              <vab-count :start-val="config2.startVal" :end-val="config2.endVal" :duration="config2.duration" :separator="config2.separator" :prefix="config2.prefix" :suffix="config2.suffix" :decimals="config2.decimals" /></span>
           </div>
         </el-card>
       </el-col>
@@ -83,24 +40,10 @@
           <div slot="header">
             <span>词云</span>
           </div>
-          <vab-chart
-            :autoresize="true"
-            theme="vab-echarts-theme"
-            :options="cy"
-            @zr:click="handleZrClick"
-            @click="handleClick"
-          />
+          <vab-chart :autoresize="true" theme="vab-echarts-theme" :options="cy" @zr:click="handleZrClick" @click="handleClick" />
           <div class="bottom">
-            <span
-              >词云数量:<vab-count
-                :start-val="config3.startVal"
-                :end-val="config3.endVal"
-                :duration="config3.duration"
-                :separator="config3.separator"
-                :prefix="config3.prefix"
-                :suffix="config3.suffix"
-                :decimals="config3.decimals"
-            /></span>
+            <span>词云数量:
+              <vab-count :start-val="config3.startVal" :end-val="config3.endVal" :duration="config3.duration" :separator="config3.separator" :prefix="config3.prefix" :suffix="config3.suffix" :decimals="config3.decimals" /></span>
           </div>
         </el-card>
       </el-col>
@@ -109,11 +52,7 @@
           <div slot="header">
             <span>GDP分布图</span>
           </div>
-          <vab-chart
-            :autoresize="true"
-            theme="vab-echarts-theme"
-            :options="zgdt"
-          />
+          <vab-chart :autoresize="true" theme="vab-echarts-theme" :options="zgdt" />
         </el-card>
       </el-col>
       <el-col :xs="24" :sm="24" :md="24" :lg="11" :xl="11">
@@ -160,7 +99,6 @@
               <td>{{ dependencies["lodash"] }}</td>
             </tr>
           </table>
-
           <div v-if="nodeEnv !== 'development'" class="bottom-btn">
             <el-popover placement="top" width="250" trigger="hover">
               <p>
@@ -174,18 +112,12 @@
             <a @click="handleChangeTheme">
               <el-button type="danger">修改主题和布局</el-button>
             </a>
-            <a
-              target="_blank"
-              href="https://github.com/chuzhixin/vue-admin-beautiful"
-            >
+            <a target="_blank" href="https://github.com/chuzhixin/vue-admin-beautiful">
               <el-button type="warning">
                 github下载源码点star（实时更新）
               </el-button>
             </a>
-            <a
-              target="_blank"
-              href="https://gitee.com/chu1204505056/vue-admin-beautiful"
-            >
+            <a target="_blank" href="https://gitee.com/chu1204505056/vue-admin-beautiful">
               <el-button type="warning">码云下载源码点star</el-button>
             </a>
             <el-popover placement="top" width="250" trigger="hover">
@@ -200,22 +132,10 @@
           </div>
         </el-card>
       </el-col>
-
-      <el-col
-        v-for="(item, index) in iconList"
-        :key="index"
-        :xs="12"
-        :sm="6"
-        :md="3"
-        :lg="3"
-        :xl="3"
-      >
+      <el-col v-for="(item, index) in iconList" :key="index" :xs="12" :sm="6" :md="3" :lg="3" :xl="3">
         <router-link :to="item.link" target="_blank">
           <el-card class="icon-panel" shadow="never">
-            <vab-icon
-              :style="{ color: item.color }"
-              :icon="['fas', item.icon]"
-            ></vab-icon>
+            <vab-icon :style="{ color: item.color }" :icon="['fas', item.icon]"></vab-icon>
             <p>{{ item.title }}</p>
           </el-card>
         </router-link>
@@ -226,12 +146,7 @@
             <span>更新日志</span>
           </div>
           <el-timeline :reverse="reverse">
-            <el-timeline-item
-              v-for="(activity, index) in activities"
-              :key="index"
-              :timestamp="activity.timestamp"
-              :color="activity.color"
-            >
+            <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp" :color="activity.color">
               {{ activity.content }}
             </el-timeline-item>
           </el-timeline>
@@ -247,12 +162,7 @@
             <h1 style="font-size: 30px;">vue-admin-beautiful</h1>
           </div>
           <div v-for="(item, index) in noticeList" :key="index">
-            <el-alert
-              v-if="index !== 0"
-              :title="item.title"
-              :type="item.type"
-              :closable="item.closable"
-            >
+            <el-alert v-if="index !== 0" :title="item.title" :type="item.type" :closable="item.closable">
             </el-alert>
             <br />
           </div>
@@ -264,7 +174,6 @@
     </el-row>
   </div>
 </template>
-
 <script>
 import VabChart from "@/plugins/echarts";
 import { dependencies, devDependencies } from "../../../package.json";
@@ -320,30 +229,24 @@ export default {
           bottom: "0%",
           containLabel: true,
         },
-        xAxis: [
-          {
-            type: "category",
-            boundaryGap: false,
-            data: [],
-            axisTick: {
-              alignWithLabel: true,
-            },
+        xAxis: [{
+          type: "category",
+          boundaryGap: false,
+          data: [],
+          axisTick: {
+            alignWithLabel: true,
           },
-        ],
-        yAxis: [
-          {
-            type: "value",
-          },
-        ],
-        series: [
-          {
-            name: "访问量",
-            type: "line",
-            data: [],
-            smooth: true,
-            areaStyle: {},
-          },
-        ],
+        }, ],
+        yAxis: [{
+          type: "value",
+        }, ],
+        series: [{
+          name: "访问量",
+          type: "line",
+          data: [],
+          smooth: true,
+          areaStyle: {},
+        }, ],
       },
       //授权数
       sqs: {
@@ -354,29 +257,23 @@ export default {
           bottom: "0%",
           containLabel: true,
         },
-        xAxis: [
-          {
-            type: "category",
-            /*boundaryGap: false,*/
-            data: ["0时", "4时", "8时", "12时", "16时", "20时", "24时"],
-            axisTick: {
-              alignWithLabel: true,
-            },
+        xAxis: [{
+          type: "category",
+          /*boundaryGap: false,*/
+          data: ["0时", "4时", "8时", "12时", "16时", "20时", "24时"],
+          axisTick: {
+            alignWithLabel: true,
           },
-        ],
-        yAxis: [
-          {
-            type: "value",
-          },
-        ],
-        series: [
-          {
-            name: "授权数",
-            type: "bar",
-            barWidth: "60%",
-            data: [10, 52, 20, 33, 39, 33, 22],
-          },
-        ],
+        }, ],
+        yAxis: [{
+          type: "value",
+        }, ],
+        series: [{
+          name: "授权数",
+          type: "bar",
+          barWidth: "60%",
+          data: [10, 52, 20, 33, 39, 33, 22],
+        }, ],
       },
       //词云
       cy: {
@@ -386,131 +283,128 @@ export default {
           right: "4%",
           bottom: "0%",
         },
-        series: [
-          {
-            type: "wordCloud",
-            gridSize: 15,
-            sizeRange: [12, 40],
-            rotationRange: [0, 0],
-            width: "100%",
-            height: "100%",
-            textStyle: {
-              normal: {
-                color() {
-                  const arr = [
-                    "#1890FF",
-                    "#36CBCB",
-                    "#4ECB73",
-                    "#FBD437",
-                    "#F2637B",
-                    "#975FE5",
-                  ];
-                  let index = Math.floor(Math.random() * arr.length);
-                  return arr[index];
-                },
+        series: [{
+          type: "wordCloud",
+          gridSize: 15,
+          sizeRange: [12, 40],
+          rotationRange: [0, 0],
+          width: "100%",
+          height: "100%",
+          textStyle: {
+            normal: {
+              color() {
+                const arr = [
+                  "#1890FF",
+                  "#36CBCB",
+                  "#4ECB73",
+                  "#FBD437",
+                  "#F2637B",
+                  "#975FE5",
+                ];
+                let index = Math.floor(Math.random() * arr.length);
+                return arr[index];
               },
             },
-            data: [
-              {
-                name: "vue-admin-beautiful",
-                value: 15000,
-              },
-              {
-                name: "element",
-                value: 10081,
-              },
-              {
-                name: "beautiful",
-                value: 9386,
-              },
-
-              {
-                name: "vue",
-                value: 6500,
-              },
-              {
-                name: "chuzhixin",
-                value: 6000,
-              },
-              {
-                name: "good",
-                value: 4500,
-              },
-              {
-                name: "success",
-                value: 3800,
-              },
-              {
-                name: "never",
-                value: 3000,
-              },
-              {
-                name: "boy",
-                value: 2500,
-              },
-              {
-                name: "girl",
-                value: 2300,
-              },
-              {
-                name: "github",
-                value: 2000,
-              },
-              {
-                name: "hbuilder",
-                value: 1900,
-              },
-              {
-                name: "dcloud",
-                value: 1800,
-              },
-              {
-                name: "china",
-                value: 1700,
-              },
-              {
-                name: "1204505056",
-                value: 1600,
-              },
-              {
-                name: "972435319",
-                value: 1500,
-              },
-              {
-                name: "young",
-                value: 1200,
-              },
-              {
-                name: "old",
-                value: 1100,
-              },
-              {
-                name: "vuex",
-                value: 900,
-              },
-              {
-                name: "router",
-                value: 800,
-              },
-              {
-                name: "money",
-                value: 700,
-              },
-              {
-                name: "qingdao",
-                value: 800,
-              },
-              {
-                name: "yantai",
-                value: 9000,
-              },
-              {
-                name: "author is very cool",
-                value: 9200,
-              },
-            ],
           },
-        ],
+          data: [{
+              name: "vue-admin-beautiful",
+              value: 15000,
+            },
+            {
+              name: "element",
+              value: 10081,
+            },
+            {
+              name: "beautiful",
+              value: 9386,
+            },
+
+            {
+              name: "vue",
+              value: 6500,
+            },
+            {
+              name: "chuzhixin",
+              value: 6000,
+            },
+            {
+              name: "good",
+              value: 4500,
+            },
+            {
+              name: "success",
+              value: 3800,
+            },
+            {
+              name: "never",
+              value: 3000,
+            },
+            {
+              name: "boy",
+              value: 2500,
+            },
+            {
+              name: "girl",
+              value: 2300,
+            },
+            {
+              name: "github",
+              value: 2000,
+            },
+            {
+              name: "hbuilder",
+              value: 1900,
+            },
+            {
+              name: "dcloud",
+              value: 1800,
+            },
+            {
+              name: "china",
+              value: 1700,
+            },
+            {
+              name: "1204505056",
+              value: 1600,
+            },
+            {
+              name: "972435319",
+              value: 1500,
+            },
+            {
+              name: "young",
+              value: 1200,
+            },
+            {
+              name: "old",
+              value: 1100,
+            },
+            {
+              name: "vuex",
+              value: 900,
+            },
+            {
+              name: "router",
+              value: 800,
+            },
+            {
+              name: "money",
+              value: 700,
+            },
+            {
+              name: "qingdao",
+              value: 800,
+            },
+            {
+              name: "yantai",
+              value: 9000,
+            },
+            {
+              name: "author is very cool",
+              value: 9200,
+            },
+          ],
+        }, ],
       },
       //中国地图
       zgdt: {
@@ -528,64 +422,62 @@ export default {
           text: ["高", "低"],
           splitNumber: 0,
         },
-        series: [
-          {
-            name: "2099年全国GDP分布",
-            type: "map",
-            roam: false,
-            zoom: 1.25,
-            mapType: "china",
-            mapLocation: {
-              x: "center",
-            },
-            selectedMode: "multiple",
-            itemStyle: {
-              normal: {
-                label: {
-                  show: false,
-                },
-              },
-              emphasis: {
-                label: {
-                  show: true,
-                },
-              },
-            },
-            data: [
-              { name: "西藏", value: 605.83 },
-              { name: "青海", value: 1670.44 },
-              { name: "宁夏", value: 2102.21 },
-              { name: "海南", value: 2522.66 },
-              { name: "甘肃", value: 5020.37 },
-              { name: "贵州", value: 5701.84 },
-              { name: "新疆", value: 6610.05 },
-              { name: "云南", value: 8893.12 },
-              { name: "重庆", value: 10011.37 },
-              { name: "吉林", value: 10568.83 },
-              { name: "山西", value: 11237.55 },
-              { name: "天津", value: 11307.28 },
-              { name: "江西", value: 11702.82 },
-              { name: "广西", value: 11720.87 },
-              { name: "陕西", value: 12512.3 },
-              { name: "黑龙江", value: 12582 },
-              { name: "内蒙古", value: 14359.88 },
-              { name: "安徽", value: 15300.65 },
-              { name: "北京", value: 16251.93 },
-              { name: "福建", value: 17560.18 },
-              { name: "上海", value: 19195.69 },
-              { name: "湖北", value: 19632.26 },
-              { name: "湖南", value: 19669.56 },
-              { name: "四川", value: 21026.68 },
-              { name: "辽宁", value: 22226.7 },
-              { name: "河北", value: 24515.76 },
-              { name: "河南", value: 26931.03 },
-              { name: "浙江", value: 32318.85 },
-              { name: "山东", value: 45361.85, selected: true },
-              { name: "江苏", value: 49110.27 },
-              { name: "广东", value: 53210.28 },
-            ],
+        series: [{
+          name: "2099年全国GDP分布",
+          type: "map",
+          roam: false,
+          zoom: 1.25,
+          mapType: "china",
+          mapLocation: {
+            x: "center",
           },
-        ],
+          selectedMode: "multiple",
+          itemStyle: {
+            normal: {
+              label: {
+                show: false,
+              },
+            },
+            emphasis: {
+              label: {
+                show: true,
+              },
+            },
+          },
+          data: [
+            { name: "西藏", value: 605.83 },
+            { name: "青海", value: 1670.44 },
+            { name: "宁夏", value: 2102.21 },
+            { name: "海南", value: 2522.66 },
+            { name: "甘肃", value: 5020.37 },
+            { name: "贵州", value: 5701.84 },
+            { name: "新疆", value: 6610.05 },
+            { name: "云南", value: 8893.12 },
+            { name: "重庆", value: 10011.37 },
+            { name: "吉林", value: 10568.83 },
+            { name: "山西", value: 11237.55 },
+            { name: "天津", value: 11307.28 },
+            { name: "江西", value: 11702.82 },
+            { name: "广西", value: 11720.87 },
+            { name: "陕西", value: 12512.3 },
+            { name: "黑龙江", value: 12582 },
+            { name: "内蒙古", value: 14359.88 },
+            { name: "安徽", value: 15300.65 },
+            { name: "北京", value: 16251.93 },
+            { name: "福建", value: 17560.18 },
+            { name: "上海", value: 19195.69 },
+            { name: "湖北", value: 19632.26 },
+            { name: "湖南", value: 19669.56 },
+            { name: "四川", value: 21026.68 },
+            { name: "辽宁", value: 22226.7 },
+            { name: "河北", value: 24515.76 },
+            { name: "河南", value: 26931.03 },
+            { name: "浙江", value: 32318.85 },
+            { name: "山东", value: 45361.85, selected: true },
+            { name: "江苏", value: 49110.27 },
+            { name: "广东", value: 53210.28 },
+          ],
+        }, ],
       },
 
       //更新日志
@@ -595,8 +487,7 @@ export default {
       //其他信息
       userAgent: navigator.userAgent,
       //卡片图标
-      iconList: [
-        {
+      iconList: [{
           icon: "video",
           title: "视频播放器",
           link: "/vab/player",
@@ -721,6 +612,7 @@ export default {
     },
   },
 };
+
 </script>
 <style lang="scss" scoped>
 .index-container {
@@ -816,4 +708,5 @@ export default {
     }
   }
 }
+
 </style>

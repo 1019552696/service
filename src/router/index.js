@@ -104,6 +104,23 @@ export const asyncRoutes = [
     ],
   },
   {
+    path: "/job",
+    component: Layout,
+    redirect: "joblist",
+    meta: { title: "工作管理" },
+    children: [
+      {
+        path: "joblist",
+        name: "Joblist",
+        component: () => import("@/views/project/jobs/index"),
+        meta: {
+          title: "工作列表",
+          icon: "cube",
+        },
+      },
+    ],
+  },
+  {
     path: "/template",
     component: Layout,
     redirect: "template",

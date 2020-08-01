@@ -1,42 +1,27 @@
 <template>
   <div class="vue-admin-beautiful-wrapper" :class="classObj">
-    <div
-      v-if="'horizontal' === layout"
-      class="layout-container-horizontal"
-      :class="{
+    <div v-if="'horizontal' === layout" class="layout-container-horizontal" :class="{
         fixed: header === 'fixed',
         'no-tags-bar': tagsBar === 'false' || tagsBar === false,
-      }"
-    >
+      }">
       <div :class="header === 'fixed' ? 'fixed-header' : ''">
         <top-bar></top-bar>
-        <div
-          v-if="tagsBar === 'true' || tagsBar === true"
-          :class="{ 'tag-view-show': tagsBar }"
-        >
+        <div v-if="tagsBar === 'true' || tagsBar === true" :class="{ 'tag-view-show': tagsBar }">
           <div class="vab-main">
             <tags-bar></tags-bar>
           </div>
         </div>
       </div>
       <div class="vab-main main-padding">
-        <!--        <ad></ad>-->
+        <!-- <ad></ad> -->
         <app-main></app-main>
       </div>
     </div>
-    <div
-      v-else
-      class="layout-container-vertical"
-      :class="{
+    <div v-else class="layout-container-vertical" :class="{
         fixed: header === 'fixed',
         'no-tags-bar': tagsBar === 'false' || tagsBar === false,
-      }"
-    >
-      <div
-        v-if="device === 'mobile' && collapse === false"
-        class="mask"
-        @click="handleFoldSideBar"
-      />
+      }">
+      <div v-if="device === 'mobile' && collapse === false" class="mask" @click="handleFoldSideBar" />
       <side-bar></side-bar>
       <div class="vab-main" :class="collapse ? 'is-collapse-main' : ''">
         <div :class="header === 'fixed' ? 'fixed-header' : ''">
@@ -50,15 +35,13 @@
     <el-backtop></el-backtop>
   </div>
 </template>
-
 <script>
-import { Ad, AppMain, NavBar, SideBar, TagsBar, TopBar } from "./components";
+import { AppMain, NavBar, SideBar, TagsBar, TopBar } from "./components";
 import { mapActions, mapGetters } from "vuex";
 import { tokenName } from "@/config/settings";
 export default {
   name: "Layout",
   components: {
-    Ad,
     TopBar,
     NavBar,
     SideBar,
@@ -147,8 +130,8 @@ export default {
     },
   },
 };
-</script>
 
+</script>
 <style lang="scss" scoped>
 @mixin fix-header {
   position: fixed;
@@ -282,6 +265,7 @@ export default {
   /* 手机端开始 */
   &.mobile {
     ::v-deep {
+
       .el-pager,
       .el-pagination__jump {
         display: none;
@@ -309,4 +293,5 @@ export default {
 
   /* 手机端结束 */
 }
+
 </style>

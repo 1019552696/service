@@ -5,12 +5,7 @@
         编辑
       </div>
       <div class="ef-node-form-body">
-        <el-form
-          v-show="type === 'node'"
-          ref="dataForm"
-          :model="node"
-          label-width="80px"
-        >
+        <el-form v-show="type === 'node'" ref="dataForm" :model="node" label-width="80px">
           <el-form-item label="类型">
             <el-input v-model="node.type" :disabled="true"></el-input>
           </el-form-item>
@@ -28,25 +23,17 @@
           </el-form-item>
           <el-form-item>
             <el-button icon="el-icon-close">重置</el-button>
-            <el-button type="primary" icon="el-icon-check" @click="save"
-              >保存
+            <el-button type="primary" icon="el-icon-check" @click="save">保存
             </el-button>
           </el-form-item>
         </el-form>
-
-        <el-form
-          v-show="type === 'line'"
-          ref="dataForm"
-          :model="line"
-          label-width="80px"
-        >
+        <el-form v-show="type === 'line'" ref="dataForm" :model="line" label-width="80px">
           <el-form-item label="条件">
             <el-input v-model="line.label"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button icon="el-icon-close">重置</el-button>
-            <el-button type="primary" icon="el-icon-check" @click="saveLine"
-              >保存
+            <el-button type="primary" icon="el-icon-check" @click="saveLine">保存
             </el-button>
           </el-form-item>
         </el-form>
@@ -55,7 +42,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { cloneDeep } from "lodash";
 
@@ -105,8 +91,8 @@ export default {
     },
   },
 };
-</script>
 
+</script>
 <style>
 .el-node-form-tag {
   position: absolute;
@@ -119,4 +105,5 @@ export default {
   border: 1px solid rgb(220, 227, 232);
   border-right: none;
 }
+
 </style>

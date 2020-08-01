@@ -1,14 +1,9 @@
 <template>
   <el-dialog title="流程数据信息" :visible.sync="dialogVisible" width="70%">
     <!--一个高亮显示的插件-->
-    <codemirror
-      :value="flowJsonData"
-      :options="options"
-      class="code"
-    ></codemirror>
+    <codemirror :value="flowJsonData" :options="options" class="code"></codemirror>
   </el-dialog>
 </template>
-
 <script>
 import "codemirror/lib/codemirror.css";
 import { codemirror } from "vue-codemirror";
@@ -38,4 +33,5 @@ export default {
     },
   },
 };
+
 </script>

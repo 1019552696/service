@@ -6,65 +6,19 @@
         <div class="ef-tooltar">
           <el-link type="primary" :underline="false">{{ data.name }}</el-link>
           <el-divider direction="vertical"></el-divider>
-          <el-button
-            type="text"
-            icon="el-icon-delete"
-            size="large"
-            :disabled="!this.activeElement.type"
-            @click="deleteElement"
-          ></el-button>
+          <el-button type="text" icon="el-icon-delete" size="large" :disabled="!this.activeElement.type" @click="deleteElement"></el-button>
           <el-divider direction="vertical"></el-divider>
-          <el-button
-            type="text"
-            icon="el-icon-download"
-            size="large"
-            @click="downloadData"
-          ></el-button>
+          <el-button type="text" icon="el-icon-download" size="large" @click="downloadData"></el-button>
           <!--                    <el-divider direction="vertical"></el-divider>-->
           <!--                    <el-button type="text" icon="el-icon-plus" size="large" @click="zoomAdd"></el-button>-->
           <!--                    <el-divider direction="vertical"></el-divider>-->
           <!--                    <el-button type="text" icon="el-icon-minus" size="large" @click="zoomSub"></el-button>-->
           <div style="float: right; margin-right: 5px;">
-            <el-button
-              plain
-              round
-              icon="el-icon-document"
-              size="mini"
-              @click="dataInfo"
-              >流程信息</el-button
-            >
-            <el-button
-              plain
-              round
-              icon="el-icon-refresh"
-              size="mini"
-              @click="dataReloadA"
-              >切换流程A</el-button
-            >
-            <el-button
-              plain
-              round
-              icon="el-icon-refresh"
-              size="mini"
-              @click="dataReloadB"
-              >切换流程B</el-button
-            >
-            <el-button
-              plain
-              round
-              icon="el-icon-refresh"
-              size="mini"
-              @click="dataReloadC"
-              >切换流程C</el-button
-            >
-            <el-button
-              plain
-              round
-              icon="el-icon-refresh"
-              size="mini"
-              @click="dataReloadD"
-              >自定义样式</el-button
-            >
+            <el-button plain round icon="el-icon-document" size="mini" @click="dataInfo">流程信息</el-button>
+            <el-button plain round icon="el-icon-refresh" size="mini" @click="dataReloadA">切换流程A</el-button>
+            <el-button plain round icon="el-icon-refresh" size="mini" @click="dataReloadB">切换流程B</el-button>
+            <el-button plain round icon="el-icon-refresh" size="mini" @click="dataReloadC">切换流程C</el-button>
+            <el-button plain round icon="el-icon-refresh" size="mini" @click="dataReloadD">自定义样式</el-button>
           </div>
         </div>
       </el-col>
@@ -75,40 +29,21 @@
       </div>
       <div id="efContainer" ref="efContainer" v-flowDrag class="container">
         <template v-for="node in data.nodeList">
-          <flow-node
-            :id="node.id"
-            :key="node.id"
-            :node="node"
-            :active-element="activeElement"
-            @changeNodeSite="changeNodeSite"
-            @nodeRightMenu="nodeRightMenu"
-            @clickNode="clickNode"
-          >
+          <flow-node :id="node.id" :key="node.id" :node="node" :active-element="activeElement" @changeNodeSite="changeNodeSite" @nodeRightMenu="nodeRightMenu" @clickNode="clickNode">
           </flow-node>
         </template>
         <!-- 给画布一个默认的宽度和高度 -->
         <div style="position: absolute; top: 2000px; left: 2000px;">&nbsp;</div>
       </div>
       <!-- 右侧表单 -->
-      <div
-        style="
-          width: 300px;
-          background-color: #fbfbfb;
-          border-left: 1px solid #dce3e8;
-        "
-      >
-        <flow-node-form
-          ref="nodeForm"
-          @setLineLabel="setLineLabel"
-          @repaintEverything="repaintEverything"
-        ></flow-node-form>
+      <div style="width: 300px;background-color: #fbfbfb;border-left: 1px solid #dce3e8;">
+        <flow-node-form ref="nodeForm" @setLineLabel="setLineLabel" @repaintEverything="repaintEverything"></flow-node-form>
       </div>
     </div>
     <!-- 流程数据详情 -->
     <flow-info v-if="flowInfoVisible" ref="flowInfo" :data="data"></flow-info>
   </div>
 </template>
-
 <script>
 import draggable from "vuedraggable";
 // import { jsPlumb } from 'jsplumb'
@@ -149,7 +84,7 @@ export default {
           let disY = e.clientY;
           el.style.cursor = "move";
 
-          document.onmousemove = function (e) {
+          document.onmousemove = function(e) {
             // 移动时禁止默认事件
             e.preventDefault();
             const left = e.clientX - disX;
@@ -161,7 +96,7 @@ export default {
             el.scrollTop += -top;
           };
 
-          document.onmouseup = function (e) {
+          document.onmouseup = function(e) {
             el.style.cursor = "auto";
             document.onmousemove = null;
             document.onmouseup = null;
@@ -290,7 +225,7 @@ export default {
         this.jsPlumb.makeTarget(node.id, this.jsplumbTargetOptions);
         this.jsPlumb.draggable(node.id, {
           containment: "parent",
-          stop: function (el) {},
+          stop: function(el) {},
         });
       }
       // 初始化连线
@@ -306,7 +241,7 @@ export default {
         };
         this.jsPlumb.connect(connParam, this.jsplumbConnectOptions);
       }
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.loadEasyFlowFinish = true;
       });
     },
@@ -324,7 +259,7 @@ export default {
       conn.setLabel({
         label: label,
       });
-      this.data.lineList.forEach(function (line) {
+      this.data.lineList.forEach(function(line) {
         if (line.from == from && line.to == to) {
           line.label = label;
         }
@@ -336,10 +271,10 @@ export default {
         this.deleteNode(this.activeElement.nodeId);
       } else if (this.activeElement.type === "line") {
         this.$confirm("确定删除所点击的线吗?", "提示", {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: "warning",
-        })
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            type: "warning",
+          })
           .then(() => {
             var conn = this.jsPlumb.getConnections({
               source: this.activeElement.sourceId,
@@ -352,7 +287,7 @@ export default {
     },
     // 删除线
     deleteLine(from, to) {
-      this.data.lineList = this.data.lineList.filter(function (line) {
+      this.data.lineList = this.data.lineList.filter(function(line) {
         if (line.from == from && line.to == to) {
           return false;
         }
@@ -434,7 +369,7 @@ export default {
        * 这里可以进行业务判断、是否能够添加该节点
        */
       this.data.nodeList.push(node);
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.jsPlumb.makeSource(nodeId, this.jsplumbSourceOptions);
         this.jsPlumb.makeTarget(nodeId, this.jsplumbTargetOptions);
         this.jsPlumb.draggable(nodeId, {
@@ -448,16 +383,16 @@ export default {
      */
     deleteNode(nodeId) {
       this.$confirm("确定要删除节点" + nodeId + "?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-        closeOnClickModal: false,
-      })
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+          closeOnClickModal: false,
+        })
         .then(() => {
           /**
            * 这里需要进行业务判断，是否可以删除
            */
-          this.data.nodeList = this.data.nodeList.filter(function (node) {
+          this.data.nodeList = this.data.nodeList.filter(function(node) {
             if (node.id === nodeId) {
               // 伪删除，将节点隐藏，否则会导致位置错位
               // node.show = false
@@ -465,7 +400,7 @@ export default {
             }
             return true;
           });
-          this.$nextTick(function () {
+          this.$nextTick(function() {
             this.jsPlumb.removeAllEndpoints(nodeId);
           });
         })
@@ -504,7 +439,7 @@ export default {
     // 流程数据信息
     dataInfo() {
       this.flowInfoVisible = true;
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.$refs.flowInfo.init();
       });
     },
@@ -560,11 +495,11 @@ export default {
     // 下载数据
     downloadData() {
       this.$confirm("确定要下载该流程数据吗？", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-        closeOnClickModal: false,
-      })
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+          closeOnClickModal: false,
+        })
         .then(() => {
           var datastr =
             "data:text/json;charset=utf-8," +
@@ -580,4 +515,5 @@ export default {
     },
   },
 };
+
 </script>

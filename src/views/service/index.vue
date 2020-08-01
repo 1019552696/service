@@ -26,25 +26,12 @@
             <el-input v-model="queryForm.spider" placeholder="爬虫名" />
           </el-form-item>
           <el-form-item>
-            <el-button
-              icon="el-icon-search"
-              type="primary"
-              native-type="submit"
-              @click="handleQuery"
-            >查询</el-button>
+            <el-button icon="el-icon-search" type="primary" native-type="submit" @click="handleQuery">查询</el-button>
           </el-form-item>
         </el-form>
       </vab-query-form-right-panel>
     </vab-query-form>
-
-    <el-table
-      ref="tableSort"
-      v-loading="listLoading"
-      :data="list"
-      :element-loading-text="elementLoadingText"
-      @selection-change="setSelectRows"
-      @sort-change="tableSortChange"
-    >
+    <el-table ref="tableSort" v-loading="listLoading" :data="list" :element-loading-text="elementLoadingText" @selection-change="setSelectRows" @sort-change="tableSortChange">
       <el-table-column show-overflow-tooltip type="selection" width="55"></el-table-column>
       <el-table-column show-overflow-tooltip label="序号" width="95">
         <template slot-scope="scope">{{ scope.$index + 1 }}</template>
@@ -62,19 +49,10 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      :background="background"
-      :current-page="queryForm.index"
-      :layout="layout"
-      :page-size="queryForm.count"
-      :total="total"
-      @current-change="handleCurrentChange"
-      @size-change="handleSizeChange"
-    ></el-pagination>
+    <el-pagination :background="background" :current-page="queryForm.index" :layout="layout" :page-size="queryForm.count" :total="total" @current-change="handleCurrentChange" @size-change="handleSizeChange"></el-pagination>
     <table-edit ref="edit"></table-edit>
   </div>
 </template>
-
 <script>
 import { getList, doDelete } from "@/api/serviceTable";
 import TableEdit from "./components/TableEdit";
@@ -105,8 +83,8 @@ export default {
       selectRows: "",
       elementLoadingText: "正在加载...",
       queryForm: {
-        index: 1,
-        count: 20,
+        index: 3,
+        count: 10,
         id: "",
         queue: "",
         spider: "",
@@ -174,6 +152,7 @@ export default {
     async fetchData() {
       this.listLoading = true;
       const { data, total } = await getList(this.queryForm);
+      console.log(await getList(this.queryForm));
       this.list = data;
       this.total = total;
       setTimeout(() => {
@@ -182,4 +161,5 @@ export default {
     },
   },
 };
+
 </script>

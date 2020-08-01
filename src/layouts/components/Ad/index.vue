@@ -1,13 +1,6 @@
 <template>
   <div class="vab-ad">
-    <el-carousel
-      v-if="adList"
-      height="30px"
-      direction="vertical"
-      :autoplay="true"
-      :interval="3000"
-      indicator-position="none"
-    >
+    <el-carousel v-if="adList" height="30px" direction="vertical" :autoplay="true" :interval="3000" indicator-position="none">
       <el-carousel-item v-for="(item, index) in adList" :key="index">
         <el-tag type="warning"> Ad</el-tag>
         <a target="_blank" :href="item.url"> {{ item.title }}</a>
@@ -33,6 +26,7 @@ export default {
     },
   },
 };
+
 </script>
 <style lang="scss" scoped>
 .vab-ad {
@@ -48,4 +42,5 @@ export default {
     color: #999;
   }
 }
+
 </style>

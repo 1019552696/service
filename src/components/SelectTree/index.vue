@@ -1,35 +1,12 @@
 <template>
   <div class="select-tree-template">
-    <el-select
-      v-model="selectValue"
-      :clearable="clearable"
-      :collapse-tags="selectType == 'multiple'"
-      :multiple="selectType == 'multiple'"
-      class="vab-tree-select"
-      value-key="id"
-      @clear="clearHandle"
-      @remove-tag="removeTag"
-    >
+    <el-select v-model="selectValue" :clearable="clearable" :collapse-tags="selectType == 'multiple'" :multiple="selectType == 'multiple'" class="vab-tree-select" value-key="id" @clear="clearHandle" @remove-tag="removeTag">
       <el-option :value="selectKey">
-        <el-tree
-          id="treeOption"
-          ref="treeOption"
-          :current-node-key="currentNodeKey"
-          :data="treeOptions"
-          :default-checked-keys="defaultSelectedKeys"
-          :default-expanded-keys="defaultSelectedKeys"
-          :highlight-current="true"
-          :props="defaultProps"
-          :show-checkbox="selectType == 'multiple'"
-          node-key="id"
-          @check="checkNode"
-          @node-click="nodeClick"
-        ></el-tree>
+        <el-tree id="treeOption" ref="treeOption" :current-node-key="currentNodeKey" :data="treeOptions" :default-checked-keys="defaultSelectedKeys" :default-expanded-keys="defaultSelectedKeys" :highlight-current="true" :props="defaultProps" :show-checkbox="selectType == 'multiple'" node-key="id" @check="checkNode" @node-click="nodeClick"></el-tree>
       </el-option>
     </el-select>
   </div>
 </template>
-
 <script>
 export default {
   name: "SelectTreeTemplate",
@@ -85,14 +62,12 @@ export default {
       },
       defaultSelectedKeys: [], //初始选中值数组
       currentNodeKey: this.selectedKey,
-      selectValue:
-        this.selectType == "multiple"
-          ? this.selectedValue.split(",")
-          : this.selectedValue, //下拉框选中值label
-      selectKey:
-        this.selectType == "multiple"
-          ? this.selectedKey.split(",")
-          : this.selectedKey, //下拉框选中值value
+      selectValue: this.selectType == "multiple" ?
+        this.selectedValue.split(",") :
+        this.selectedValue, //下拉框选中值label
+      selectKey: this.selectType == "multiple" ?
+        this.selectedKey.split(",") :
+        this.selectedKey, //下拉框选中值value
     };
   },
   mounted() {
@@ -158,8 +133,8 @@ export default {
     },
   },
 };
-</script>
 
+</script>
 <style lang="scss" scoped>
 .el-scrollbar .el-scrollbar__view .el-select-dropdown__item {
   height: auto;
@@ -172,7 +147,7 @@ export default {
   font-weight: normal;
 }
 
-ul li > .el-tree .el-tree-node__content {
+ul li>.el-tree .el-tree-node__content {
   height: auto;
   padding: 0 20px;
 }
@@ -181,15 +156,16 @@ ul li > .el-tree .el-tree-node__content {
   font-weight: normal;
 }
 
-.el-tree > .is-current .el-tree-node__label {
+.el-tree>.is-current .el-tree-node__label {
   font-weight: 700;
   color: #409eff;
 }
 
-.el-tree > .is-current .el-tree-node__children .el-tree-node__label {
+.el-tree>.is-current .el-tree-node__children .el-tree-node__label {
   font-weight: normal;
   color: #606266;
 }
+
 </style>
 <style lang="scss">
 /* .vab-tree-select{
@@ -198,4 +174,5 @@ ul li > .el-tree .el-tree-node__content {
         overflow:hidden;
       }
     } */
+
 </style>

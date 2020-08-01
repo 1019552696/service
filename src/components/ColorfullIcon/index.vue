@@ -1,15 +1,9 @@
 <template>
-  <img
-    v-if="isExternal"
-    :src="styleExternalIcon"
-    class="svg-external-icon svg-icon"
-    v-on="$listeners"
-  />
+  <img v-if="isExternal" :src="styleExternalIcon" class="svg-external-icon svg-icon" v-on="$listeners" />
   <svg v-else :class="svgClass" aria-hidden="true" v-on="$listeners">
     <use :xlink:href="iconName" />
   </svg>
 </template>
-
 <script>
 import { isExternal } from "@/utils/validate";
 
@@ -44,8 +38,8 @@ export default {
     },
   },
 };
-</script>
 
+</script>
 <style lang="scss" scoped>
 .svg-icon {
   width: 1em;
@@ -62,4 +56,5 @@ export default {
 .svg-external-icon {
   display: inline-block;
 }
+
 </style>
