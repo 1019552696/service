@@ -26,3 +26,13 @@ export function doDelete(data) {
     data,
   });
 }
+
+export function getDetail(data) {
+  return request({
+    url: "/v1/job/detail",
+    method: "post",
+    params: {
+      id: data.id,
+    },
+  });
+}

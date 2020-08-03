@@ -1,12 +1,21 @@
 <template>
-  <div class="jobs-container">
+  <div class="jobs-table">
     <vab-query-form>
       <vab-query-form-left-panel>
-        <el-button icon="el-icon-plus" type="primary" @click="handleAdd">添加</el-button>
-        <el-button icon="el-icon-delete" type="danger" @click="handleDelete">删除</el-button>
+        <el-button icon="el-icon-plus" type="primary" @click="handleAdd"
+          >添加</el-button
+        >
+        <el-button icon="el-icon-delete" type="danger" @click="handleDelete"
+          >删除</el-button
+        >
       </vab-query-form-left-panel>
       <vab-query-form-right-panel>
-        <el-form ref="form" :model="queryForm" :inline="true" @submit.native.prevent>
+        <el-form
+          ref="form"
+          :model="queryForm"
+          :inline="true"
+          @submit.native.prevent
+        >
           <el-form-item>
             <el-input v-model="queryForm.object_id" placeholder="对象ID" />
           </el-form-item>
@@ -20,42 +29,79 @@
             <el-input v-model="queryForm.user_id" placeholder="用户ID" />
           </el-form-item>
           <el-form-item>
-            <el-button icon="el-icon-search" type="primary" native-type="submit" @click="handleQuery">查询</el-button>
+            <el-button
+              icon="el-icon-search"
+              type="primary"
+              native-type="submit"
+              @click="handleQuery"
+              >查询</el-button
+            >
           </el-form-item>
         </el-form>
       </vab-query-form-right-panel>
     </vab-query-form>
-    <el-table v-loading="listLoading" :data="list" :element-loading-text="elementLoadingText" @selection-change="setSelectRows">
+    <el-table
+      v-loading="listLoading"
+      :data="list"
+      :element-loading-text="elementLoadingText"
+      @selection-change="setSelectRows"
+    >
       <el-table-column show-overflow-tooltip type="selection"></el-table-column>
       <el-table-column show-overflow-tooltip label="序号" width="95">
         <template slot-scope="scope">{{ scope.$index + 1 }}</template>
       </el-table-column>
       <el-table-column show-overflow-tooltip prop="object_id" label="对象ID" />
       <el-table-column show-overflow-tooltip prop="status" label="任务状态" />
-      <el-table-column show-overflow-tooltip prop="template_id" label="模板ID" />
-      <el-table-column show-overflow-tooltip prop="update_at" label="修改时间" />
+      <el-table-column
+        show-overflow-tooltip
+        prop="template_id"
+        label="模板ID"
+      />
+      <el-table-column
+        show-overflow-tooltip
+        prop="update_at"
+        label="修改时间"
+      />
       <el-table-column show-overflow-tooltip prop="user_id" label="用户ID" />
       <el-table-column fixed="right" label="操作" width="200">
         <template v-slot="scope">
-          <el-button type="text" @click="handleEdit(scope.row)">编辑
+          <el-button type="text" @click="handleEdit(scope.row)"
+            >编辑
           </el-button>
-          <el-button type="text" @click="handleDelete(scope.row)">删除
+          <el-button type="text" @click="handleDelete(scope.row)"
+            >删除
+          </el-button>
+          <el-button type="text" @click="handleDetail(scope.row)"
+            >详情
           </el-button>
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination background :current-page="queryForm.index" :page-size="queryForm.count" :layout="layout" :total="total" @size-change="handleSizeChange" @current-change="handleCurrentChange">
+    <el-pagination
+      background
+      :current-page="queryForm.index"
+      :page-size="queryForm.count"
+      :layout="layout"
+      :total="total"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    >
     </el-pagination>
     <edit ref="edit" @fetchData="fetchData"></edit>
+    <detail ref="detail"></detail>
   </div>
 </template>
 <script>
 import { getList, doDelete } from "@/api/jobs";
 import Edit from "./components/JobsEdit";
+import Detail from "./components/JobsDetail";
 
 export default {
   name: "Jobs",
-  components: { Edit },
+  components: {
+    Edit,
+    Detail,
+  },
   data() {
     return {
       list: [],
@@ -71,7 +117,7 @@ export default {
         object_id: "",
         status: "",
         template_id: "",
-        user_id: ""
+        user_id: "",
       },
     };
   },
@@ -110,7 +156,12 @@ export default {
         }
       }
     },
-    handleAdd(){
+    handleDetail(row) {
+      if (row.id) {
+        this.$refs["detail"].showDetail(row);
+      }
+    },
+    handleAdd() {
       this.$refs["edit"].showEdit();
     },
     handleSizeChange(val) {
@@ -125,7 +176,7 @@ export default {
       this.queryForm.index = 1;
       this.fetchData();
     },
-    handleQuery(){
+    handleQuery() {
       this.queryForm.index = 1;
       this.fetchData();
     },
@@ -140,5 +191,4 @@ export default {
     },
   },
 };
-
 </script>
